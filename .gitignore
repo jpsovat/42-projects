@@ -1,0 +1,54 @@
+# === Compilação C/C++ ===
+*.o
+*.a
+*.so
+*.out
+*.exe
+*.dSYM/
+*.gcno
+*.gcda
+
+# === Arquivos temporários do editor ===
+*.swp
+*.swo
+*.tmp
+
+# === Arquivos gerados pelo Vim/NeoVim ===
+*.vimbackup
+*.viminfo
+*.undo
+*.nvimlog
+
+# === Diretórios de IDEs e editores ===
+.vscode/
+.idea/
+
+# === Arquivos de sistema ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# === Arquivos de logs e dumps ===
+*.log
+*.trace
+*.core
+*.bak
+
+# === Arquivos de pacotes ou compressão ===
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+# === Shell ===
+*.sh~
+*.old
+
+# === Pastas que não devem ir pro Git ===
+__pycache__/
+node_modules/
+.goinfre/
+
