@@ -36,7 +36,6 @@ desktop.ini
 *.bak
 
 # === Shell ===
-*.sh~
 *.old
 
 # === Pastas que não devem ir pro Git ===
