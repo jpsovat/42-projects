@@ -35,14 +35,6 @@ desktop.ini
 *.core
 *.bak
 
-# === Arquivos de pacotes ou compressão ===
-*.zip
-*.tar
-*.tar.gz
-*.tgz
-*.7z
-*.rar
-
 # === Shell ===
 *.sh~
 *.old
