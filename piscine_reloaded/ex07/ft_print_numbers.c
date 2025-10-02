@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 09:16:39 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/02 09:23:57 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/02 09:16:28 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/02 09:33:09 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_print_alphabet(void)
+void	ft_print_numbers(void)
 {
-	char	c;
+	char	n;
 
-	c = 'a';
-	while (c <= 'z')
+	n = '0';
+
+	while (n <= '9')
 	{
-		ft_putchar(c);
-		c++;
+		ft_putchar(n);
+		n++;
 	}
 }
