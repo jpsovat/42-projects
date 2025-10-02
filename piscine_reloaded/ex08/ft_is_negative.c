@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 09:16:28 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/02 09:52:50 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/02 09:41:45 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/02 09:53:40 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_print_numbers(void)
+void	ft_is_negative(int n)
 {
-	char	n;
-
-	n = '0';
-	while (n <= '9')
+	if (n < 0)
 	{
-		ft_putchar(n);
-		n++;
+		ft_putchar('N');
 	}
+	else
+		ft_putchar('P');
 }
