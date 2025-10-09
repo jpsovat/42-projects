@@ -5,20 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 09:30:48 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/03 10:21:59 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/09 08:30:00 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/09 08:50:00 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_sqrt(int nb);
+int	ft_strcmp(char *s1, char *s2);
 
 int	main(void)
 {
-	printf("sqrt of 4 = %d\n", ft_sqrt(4));   // 2
-	printf("sqrt of 9  = %d\n", ft_sqrt(9));   // 3
-	printf("sqrt of 10000 = %d\n", ft_sqrt(10000));   // 100
-	printf("sqrt of 100000000 = %d\n", ft_sqrt(100000000));   // 10000
+	printf("Comparando \"Joao\" e \"Joao\" → %d\n", ft_strcmp("Joao", "Joao"));
+	printf("Comparando \"ABCD\" e \"ABBD\" → %d\n", ft_strcmp("ABCD", "ABBD"));
+	printf("Comparando \"ABBD\" e \"ABCD\" → %d\n", ft_strcmp("ABBD", "ABCD"));
+	printf("Comparando \"42\" e \"420\"   → %d\n", ft_strcmp("42", "420"));
+	printf("Comparando \"420\" e \"42\"   → %d\n", ft_strcmp("420", "42"));
 	return (0);
 }
