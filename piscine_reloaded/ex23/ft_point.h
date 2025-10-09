@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 08:30:00 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/09 11:36:20 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/09 11:28:37 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/09 11:43:48 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_point.h"
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-void set_point(t_point *point)
- {
- 	point->x = 42;
- 	point->y = 21;
- }
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
- int	main(void)
- {
- 	t_point	point;
-	
- 	set_point(&point);
-	return (0);
- }
+#endif
