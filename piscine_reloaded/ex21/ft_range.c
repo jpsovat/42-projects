@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 08:30:00 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/09 10:57:22 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/09 10:34:56 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/09 10:59:02 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
-int	*ft_range(int min, int max);
-
-int	main(void)
+int	*ft_range(int min, int max)
 {
-	int	min;
-	int	max;
-	int	*tab;
-	int	i;
+	int		size;
+	int		*array;
+	int		i;
 
-	// 🧩 Teste 1: intervalo normal
-	min = 3;
-	max = 10;
-	tab = ft_range(min, max);
-
-	printf("ft_range(%d, %d): ", min, max);
-	i = 0;
-	while (i < max - min)
+	if (min >= max)
 	{
-		printf("%d ", tab[i]);
+		return (NULL);
+	}
+	size = max - min;
+	array = (int *)malloc(sizeof(int) * size);
+	if (array == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		array[i] = min + i;
 		i++;
 	}
-	printf("\n");
-	free(tab);
-	
-	return (0);
+	return (array);
 }
