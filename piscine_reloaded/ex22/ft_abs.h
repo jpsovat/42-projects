@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 08:30:00 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/09 11:27:41 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/09 11:02:45 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/09 11:27:42 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_abs.h"
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
-int main(void)
-{
-    int a = -5;
-    int b = 10;
-    int c = 0;
+# define ABS(Value) ((Value) < 0 ? -(Value) : (Value))
 
-    printf("ABS(%d) = %d\n", a, ABS(a));
-    printf("ABS(%d) = %d\n", b, ABS(b));
-    printf("ABS(%d) = %d\n", c, ABS(c));
-    printf("ABS(%d) = %d\n", -42, ABS(-42));
-    printf("ABS(%d) = %d\n", 42, ABS(42));
-
-    return (0);
-}
+#endif
