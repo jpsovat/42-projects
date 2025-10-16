@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:25:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/09/19 09:33:27 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:13:51 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int ft_isdigit(int c);
 int ft_isalnum(int c);
 int ft_isascii(int c);
 int ft_isprint(int c);
+int	ft_strlen(char *str);
 
 #endif	
