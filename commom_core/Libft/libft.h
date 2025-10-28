@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:25:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/28 11:36:07 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:24:53 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

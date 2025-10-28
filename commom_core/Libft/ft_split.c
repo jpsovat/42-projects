@@ -6,12 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:44:22 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/28 07:55:00 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:52:21 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 size_t	ft_count_substr(const char *str, char dlm)
 {
@@ -44,6 +43,7 @@ static void	ft_free_split(char **array, size_t i)
 static char	*ft_get_word(char const *s, char c, size_t *start)
 {
 	size_t	end;
+	char	*res;
 
 	while (s[*start] && s[*start] == c)
 		(*start)++;
@@ -52,7 +52,9 @@ static char	*ft_get_word(char const *s, char c, size_t *start)
 	end = *start;
 	while (s[end] && s[end] != c)
 		end++;
-	return (ft_substr(s, *start, end - *start));
+	res = ft_substr(s, *start, end - *start);
+	*start = end;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)

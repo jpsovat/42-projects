@@ -6,12 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 07:11:27 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/28 11:28:59 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:23:39 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {

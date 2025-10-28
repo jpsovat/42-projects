@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 10:50:26 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/21 10:55:54 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:17:15 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_toupper(int c)
 {
-	int	upper;
-
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);
 	return (c);

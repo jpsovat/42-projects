@@ -5,17 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 10:34:26 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/09/19 08:54:48 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/10/28 12:38:44 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/10/28 12:38:56 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * ft_isalpha - Checks if a character is an alphabetic letter.
- * @c: The character to check.
- *
- * Return: 1 if c is an alphabetic letter, 0 otherwise.
- */
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {

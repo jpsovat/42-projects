@@ -6,11 +6,13 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 08:39:11 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/28 11:28:04 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:20:27 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
