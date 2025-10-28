@@ -6,47 +6,45 @@
 #    By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/18 11:41:30 by jsovat-d          #+#    #+#              #
-#    Updated: 2025/09/19 09:33:25 by jsovat-d         ###   ########.fr        #
+#    Updated: 2025/10/28 12:14:35 by jsovat-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ---- Libft basic ----
+NAME = libft.a
 
-# regra principal: constrói a biblioteca
-all: libft.a
+PART1 = ft_tolower.c ft_toupper.c ft_isprint.c ft_isascii.c ft_isalnum.c \
+		ft_isdigit.c ft_isalpha.c ft_atoi.c ft_strlen.c ft_strlcat.c \
+		ft_strncmp.c ft_strdup.c ft_calloc.c ft_memcpy.c ft_strchr.c \
+		ft_strrchr.c ft_strnstr.c ft_bzero.c ft_memchr.c ft_memcmp.c \
+		ft_memset.c ft_memmove.c ft_strlcpy.c
 
-# a libft.a depende dos objetos:
-# cria a biblioteca estática libft.a, que depende das funções "ft_"
-libft.a: ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o
-	ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o
+PART2 = ft_itoa.c ft_strjoin.c ft_split.c ft_striteri.c ft_strmapi.c \
+		ft_substr.c ft_strtrim.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
+		ft_putnbr_fd.c
 
-# compila ft_isalpha.c e libft.h, gerando ft_isalpha.o
-ft_isalpha.o: ft_isalpha.c libft.h
-	gcc -c -Wall -Wextra -Werror ft_isalpha.c
+SRC = ${PART1} ${PART2}
+OBJ = ${SRC:.c=.o}
 
-# compila ft_isdigit.c e libft.h, gerando ft_isdigit.o
-ft_isdigit.o: ft_isdigit.c libft.h
-	gcc -c -Wall -Wextra -Werror ft_isdigit.c
+AR = ar rcs
+RM = rm -f
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+INCLUDE = -I .
 
-# compila ft_isalnum.c e libft.h, gerando ft_isalnum.o
-ft_isalnum.o: ft_isalnum.c libft.h
-	gcc -c -Wall -Wextra -Werror ft_isalnum.c
+.o:.c
+	${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
-# compila ft_isascii.c e libft.h, gerando ft_isascii.o
-ft_isascii.o: ft_isascii.c libft.h
-	gcc -c -Wall -Wextra -Werror ft_isascii.c
+all: ${NAME}
 
-# compila ft_isprint.c e libft.h, gerando ft_isprint.o
-ft_isprint.o: ft_isprint.c libft.h
-	gcc -c -Wall -Wextra -Werror ft_isprint.c
+${NAME}: ${OBJ}
+	${AR} ${NAME} ${OBJ}
 
-# remove todos os arquivos objeto gerados
 clean:
-	rm -f *.o
+	${RM} ${OBJ}
 
-# remove a biblioteca
 fclean: clean
-	rm -f libft.a
+	${RM} ${NAME}
 
-# recompila tudo do zero
 re: fclean all
+
+.PHONY: all clean fclean re
