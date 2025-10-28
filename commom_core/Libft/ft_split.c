@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:44:22 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/10/27 21:12:22 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/10/28 07:55:00 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,42 +34,49 @@ size_t	ft_count_substr(const char *str, char dlm)
 	return (n_str);
 }
 
+static void	ft_free_split(char **array, size_t i)
+{
+	while (i > 0)
+		free(array[--i]);
+	free(array);
+}
+
+static char	*ft_get_word(char const *s, char c, size_t *start)
+{
+	size_t	end;
+
+	while (s[*start] && s[*start] == c)
+		(*start)++;
+	if (!s[*start])
+		return (NULL);
+	end = *start;
+	while (s[end] && s[end] != c)
+		end++;
+	return (ft_substr(s, *start, end - *start));
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	n_str;
 	size_t	i;
 	size_t	start;
-	size_t	end;
 	char	**array;
+	char	*word;
 
 	if (!s)
 		return (NULL);
 	n_str = ft_count_substr(s, c);
-	array = (char **)malloc(sizeof(char *) * (n_str + 1));
+	array = malloc(sizeof(char *) * (n_str + 1));
 	if (!array)
 		return (NULL);
-	array[n_str] = NULL;
 	i = 0;
 	start = 0;
-	while (s[start])
+	while (i < n_str)
 	{
-		while (s[start] && s[start] == c)
-			start++;
-		if (!s[start])
-			break ;
-		end = start;
-		while (s[end] && s[end] != c)
-			end++;
-		array[i] = ft_substr(s, start, end - start);
-		if (!array[i])
-		{
-			while (i > 0)
-				free(array[--i]);
-			free(array);
-			return (NULL);
-		}
-		i++;
-		start = end;
+		word = ft_get_word(s, c, &start);
+		if (!word)
+			return (ft_free_split(array, i), NULL);
+		array[i++] = word;
 	}
 	array[i] = NULL;
 	return (array);
