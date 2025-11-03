@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 09:14:07 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/03 13:04:11 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:10:23 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	ft_printf(const char *format, ...)
 
 int	main (void)
 {
-	ft_printf("My age is %d years and my sister's is %d.\nWe are %s.\nMy initial is %c.\n", 30, 31, "brothers", 'J');
+	ft_printf("Score: %d | Index: %i\n", 42, -7);
 	return (0);
 }
