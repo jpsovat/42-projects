@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 16:42:38 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/03 13:04:13 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/04 09:17:36 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	ft_format_handler(char c, va_list args);
 int	ft_print_int(va_list args);
 int	ft_print_str(va_list args);
 int	ft_print_char(va_list args);
+int	ft_print_unsigned(va_list args);
 
 #endif

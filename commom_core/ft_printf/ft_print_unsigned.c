@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 07:57:19 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/03 21:07:33 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/11/03 13:15:10 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/11/04 09:17:32 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "ft_printf.h"
 
-static size_t	ft_numlen(long nb)
+static size_t	ft_numlen(unsigned int nb)
 {
 	size_t	len;
 
@@ -28,31 +27,36 @@ static size_t	ft_numlen(long nb)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_uitoa(unsigned int u)
 {
-	long	nb;
-	int		neg;
-	size_t	digits;
 	char	*str;
+	int		len;
 
-	nb = (long)n;
-	neg = (nb < 0);
-	if (neg)
-		nb = -nb;
-	digits = ft_numlen(nb);
-	if (n == 0)
-		return (ft_strdup("0"));
-	str = (char *)malloc(sizeof (char) * (digits + neg + 1));
+	len = ft_numlen(u);
+	str = (char *)malloc(sizeof (char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str[digits + neg] = '\0';
-	while (digits > 0)
+	str[len] = '\0';
+	len--;
+	while (len >= 0)
 	{
-		str[digits + neg - 1] = (nb % 10) + '0';
-		nb /= 10;
-		digits--;
+		str[len] = u % 10 + '0';
+		u /= 10;
+		len--;
 	}
-	if (neg)
-		str[0] = '-';
 	return (str);
+}
+
+int	ft_print_unsigned(va_list args)
+{
+	unsigned int	u;
+	char			*str;
+	int				count;
+
+	u = va_arg(args, unsigned int);
+	str = ft_uitoa(u);
+	write(1, str, ft_strlen(str));
+	count = ft_strlen(str);
+	free(str);
+	return (count);
 }

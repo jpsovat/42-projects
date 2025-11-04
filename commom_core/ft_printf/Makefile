@@ -6,7 +6,7 @@
 #    By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/02 16:59:46 by jsovat-d          #+#    #+#              #
-#    Updated: 2025/11/03 09:10:12 by jsovat-d         ###   ########.fr        #
+#    Updated: 2025/11/04 09:17:35 by jsovat-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = 	ft_printf.c \
 		ft_print_int.c \
 		ft_print_str.c \
 		ft_print_char.c \
+		ft_print_unsigned.c \
 
 OBJS = ${SRCS:.c=.o}
 
@@ -40,7 +41,7 @@ ${NAME}: ${OBJS} ${LIBFT}
 	@echo "✅ $(NAME) created successfully."
 
 %.o: %.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@${RM} ${OBJS}
