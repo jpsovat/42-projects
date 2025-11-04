@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 09:14:07 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/04 09:17:31 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:48:09 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int	main (void)
 	ft_printf("String: %s | Single char: %c\n", "Joao Pedro", 'c');
 	ft_printf("Unsigned: %u\n", 21395844);
 	ft_printf("percent: %%\n");
+	ft_printf("Hex lower: %x\n", 0);			// expected 0
+	ft_printf("Hex lower: %x\n", 10);			// expected a
+	ft_printf("Hex lower: %x\n", 255); 			// expected ff
+	ft_printf("Hex lower: %x\n", 4294967295u); 	// expected ffffffff
 	return (0);
-
 }
