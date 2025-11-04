@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 09:14:07 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/04 10:48:09 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:57:20 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ int	main (void)
 	ft_printf("Hex lower: %x\n", 10);			// expected a
 	ft_printf("Hex lower: %x\n", 255); 			// expected ff
 	ft_printf("Hex lower: %x\n", 4294967295u); 	// expected ffffffff
+	ft_printf("Hex upper: %X\n", 0);			// expected 0
+	ft_printf("Hex upper: %X\n", 10);			// expected A
+	ft_printf("Hex upper: %X\n", 255); 			// expected FF
+	ft_printf("Hex upper: %X\n", 4294967295u); 	// expected FFFFFFFF
 	return (0);
 }
