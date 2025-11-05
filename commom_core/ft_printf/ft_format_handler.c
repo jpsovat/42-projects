@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 16:30:42 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/04 10:53:39 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/05 08:22:47 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int	ft_format_handler(char c, va_list args)
 		return (ft_print_lowhex(args));
 	else if (c == 'X')
 		return (ft_print_upperhex(args));
+	else if (c == 'p')
+		return (ft_print_ptr(args));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 09:14:07 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/04 10:57:20 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/05 08:26:06 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,13 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
+/*
 int	main (void)
 {
+	int x = 42;
+	int *ptr = &x;
+	int *null_ptr = NULL;
+	
 	ft_printf("Score: %d | Index: %i\n", 42, -7);
 	ft_printf("String: %s | Single char: %c\n", "Joao Pedro", 'c');
 	ft_printf("Unsigned: %u\n", 21395844);
@@ -58,5 +63,8 @@ int	main (void)
 	ft_printf("Hex upper: %X\n", 10);			// expected A
 	ft_printf("Hex upper: %X\n", 255); 			// expected FF
 	ft_printf("Hex upper: %X\n", 4294967295u); 	// expected FFFFFFFF
+	ft_printf("Pointer: %p\n", ptr);
+	ft_printf("Null pointer: %p\n", null_ptr);
 	return (0);
 }
+*/

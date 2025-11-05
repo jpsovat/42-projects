@@ -6,7 +6,7 @@
 #    By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/02 16:59:46 by jsovat-d          #+#    #+#              #
-#    Updated: 2025/11/04 10:47:46 by jsovat-d         ###   ########.fr        #
+#    Updated: 2025/11/05 08:22:36 by jsovat-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = 	ft_printf.c \
 		ft_print_char.c \
 		ft_print_unsigned.c \
 		ft_print_lowhex.c \
+		ft_print_ptr.c \
 
 OBJS = ${SRCS:.c=.o}
 
