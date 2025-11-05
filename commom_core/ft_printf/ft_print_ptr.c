@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:57:35 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/05 09:06:20 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:08:28 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,18 @@ int	ft_print_ptr(va_list args)
 	int				count;
 
 	ptr = va_arg(args, void *);
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	addr = (unsigned long)ptr;
 	str = ft_ultoa_hex(addr);
 	if (!str)
 		return (-1);
 	write(1, "0x", 2);
 	write(1, str, ft_strlen(str));
-	count = ft_strlen(str);
+	count = ft_strlen(str) + 2;
 	free(str);
 	return (count);
 }
