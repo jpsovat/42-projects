@@ -6,10 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 09:14:07 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/11/05 09:06:19 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:04:20 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
 static int	ft_process_format(const char *format, va_list args, int *i)
@@ -50,26 +51,46 @@ int	ft_printf(const char *format, ...)
 }
 
 /*
-int	main (void)
+int	main(void)
 {
-	int x = 42;
-	int *ptr = &x;
-	int *null_ptr = NULL;
-	
-	ft_printf("Score: %d | Index: %i\n", 42, -7);
-	ft_printf("String: %s | Single char: %c\n", "Joao Pedro", 'c');
-	ft_printf("Unsigned: %u\n", 21395844);
-	ft_printf("percent: %%\n");
-	ft_printf("Hex lower: %x\n", 0);			// expected 0
-	ft_printf("Hex lower: %x\n", 10);			// expected a
-	ft_printf("Hex lower: %x\n", 255); 			// expected ff
-	ft_printf("Hex lower: %x\n", 4294967295u); 	// expected ffffffff
-	ft_printf("Hex upper: %X\n", 0);			// expected 0
-	ft_printf("Hex upper: %X\n", 10);			// expected A
-	ft_printf("Hex upper: %X\n", 255); 			// expected FF
-	ft_printf("Hex upper: %X\n", 4294967295u); 	// expected FFFFFFFF
-	ft_printf("Pointer: %p\n", ptr);
-	ft_printf("Null pointer: %p\n", null_ptr);
+	int		x = 42;
+	int		y = -7;
+	int		*ptr = &x;
+	int		*null_ptr = NULL;
+	unsigned int	u = 21395844;
+
+	printf("\n========== [ REAL printf vs ft_printf ] ==========\n\n");
+
+	// %d and %i
+	printf("REAL -> Score: %d | Index: %i\n", x, y);
+	ft_printf(" MINE -> Score: %d | Index: %i\n\n", x, y);
+
+	// %s and %c
+	printf("REAL -> String: %s | Single char: %c\n", "Joao Pedro", 'c');
+	ft_printf(" MINE -> String: %s | Single char: %c\n\n", "Joao Pedro", 'c');
+
+	// %u
+	printf("REAL -> Unsigned: %u\n", u);
+	ft_printf(" MINE -> Unsigned: %u\n\n", u);
+
+	// %%
+	printf("REAL -> percent: %%\n");
+	ft_printf(" MINE -> percent: %%\n\n");
+
+	// %x
+	printf("REAL -> Hex lower: %x | %x | %x | %x\n", 0, 10, 255, 4294967u);
+	ft_printf(" MINE -> Hex lower: %x | %x | %x | %x\n\n", 0, 10, 255, 4294967u);
+
+	// %X
+	printf("REAL -> Hex upper: %X | %X | %X | %X\n", 0, 10, 255, 4294967u);
+	ft_printf(" MINE -> Hex upper: %X | %X | %X | %X\n\n", 0, 10, 255, 4294967u);
+
+	// %p
+	printf("REAL -> Pointer: %p | Null: %p\n", ptr, null_ptr);
+	ft_printf(" MINE -> Pointer: %p | Null: %p\n\n", ptr, null_ptr);
+
+	printf("==================================================\n\n");
+
 	return (0);
 }
 */
