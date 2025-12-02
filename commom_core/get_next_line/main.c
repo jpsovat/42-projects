@@ -3,26 +3,24 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	get_next_line(int fd, char **line);
+char	*get_next_line(int fd);
 
 int	main(void)
 {
 	int		fd;
-	int		status;
-	char	*line;
+	char		*line;
 
 	fd = open("test.txt", O_RDONLY);
 	if (fd < 0)
 		return (1);
-	while ((status = get_next_line(fd, &line)) > 0)
+	line = get_next_line(fd);
+	while (line)
 	{
 		printf("LINE: %s\n", line);
 		free(line);
+		line = get_next_line(fd);
 	}
-	if (status == -1)
-		printf("Error\n");
-	else
-		printf("EOF reached\n");
+	printf("EOF reached\n");
 	close(fd);
 	return (0);
 }

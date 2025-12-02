@@ -34,7 +34,7 @@ ssize_t	read_and_expand(int fd, char **stash)
 		if (!*stash)
 			return (-1);
 		if (find_newline(*stash) != -1)
-			break ;
+			return (bytes_read);
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	return (bytes_read);
