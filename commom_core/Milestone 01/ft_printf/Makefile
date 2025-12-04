@@ -6,7 +6,7 @@
 #    By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/02 16:59:46 by jsovat-d          #+#    #+#              #
-#    Updated: 2025/11/05 10:27:56 by jsovat-d         ###   ########.fr        #
+#    Updated: 2025/12/04 09:37:53 by jsovat-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,4 @@ fclean: clean
 
 re: fclean all
 
-bonus: all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
