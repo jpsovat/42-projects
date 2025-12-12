@@ -5,110 +5,102 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 12:34:03 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/02 10:59:45 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/12/12 14:01:28 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/12/12 14:28:14 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*get_line(char **buffer)
-{
-	char	*line;
-	char	*keep;
-	size_t	til_null;
-	size_t	til_new;
+/* ========================================================================== */
+/*                               HELPERS                                      */
+/* ========================================================================== */
 
-	til_new = strlen_at(*buffer, '\n');
-	if ((*buffer)[til_new] == '\n')
-		til_new++;
-	line = cpy_buffer(*buffer, til_new);
-	if (!line)
+/*
+** grow_line
+** --------------------------------------------------------------------------
+** Appends the content of `buffer` to the accumulated `line`.
+** - Allocates a new string with the correct size
+** - Copies old content + new buffer
+** - Frees the previous line
+** - Returns the updated line
+*/
+char	*grow_line(const char *buffer, char *line)
+{
+	char	*line_uptd;
+	size_t	len_line;
+	size_t	len_buffer;
+
+	len_line = 0;
+	if (line)
+		len_line = strlen(line);
+	len_buffer = strlen(buffer);
+	line_uptd = (char *)malloc(len_line + len_buffer + 1);
+	if (!line_uptd)
 		return (NULL);
-	til_null = strlen_at(*buffer, '\0');
-	keep = cpy_buffer(*buffer + til_new, til_null - til_new + 1);
-	if (!keep)
-	{
-		free (line);
-		return (NULL);
-	}
-	free(*buffer);
-	*buffer = keep;
-	return (line);
+	ft_strcpy(buffer, line, line_uptd);
+	if (line)
+		free(line);
+	return (line_uptd);
 }
 
-static char	*get_full_stash(int fd, char *stash)
+/*
+** find_newline
+** --------------------------------------------------------------------------
+** Checks if a newline character '\n' exists in the buffer.
+** - Only inspects the bytes actually read from fd
+*/
+int	find_newline(const char *buffer, ssize_t bytes_read)
 {
-	char	*buffer;
-	ssize_t	bytes;
+	int	i;
 
-	bytes = 1;
+	if (!buffer)
+		return (-1);
+	i = 0;
+	while (i < bytes_read)
+	{
+		if (buffer[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+/* ========================================================================== */
+/*                          GET_NEXT_LINE                                     */
+/* ========================================================================== */
+
+/*
+** get_next_line (simplified version)
+** --------------------------------------------------------------------------
+** Reads from fd until a newline is found or EOF is reached.
+** - Uses a static variable to accumulate content
+** - Stops reading as soon as '\n' appears
+** - Returns the accumulated line
+*/
+char	*get_next_line(int fd)
+{
+	ssize_t		bytes_read;
+	char		*buffer;
+	static char	*line;
+
+	bytes_read = 1;
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (bytes > 0 && !find_chr(stash, '\n'))
+	while (bytes_read > 0 && find_newline(buffer, bytes_read) == 0)
 	{
-		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes == 0)
-			break ;
-		if (bytes == -1)
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
-		buffer[bytes] = '\0';
-		stash = merge_stash_buffer(stash, buffer);
+		if (bytes_read == 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		line = grow_line(buffer, line);
 	}
 	free(buffer);
-	if (strlen_at(stash, '\0') > 0)
-		return (stash);
-	return (NULL);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*stash;
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	stash = get_full_stash(fd, stash);
-	if (!stash)
-		return (NULL);
-	line = get_line(&stash);
-	if (!stash[0])
-	{
-		free (stash);
-		stash = NULL;
-	}
 	return (line);
 }
-
-/*
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-char	*get_next_line(int fd);
-
-int	main(void)
-{
-	int		fd;
-	char		*line;
-
-	fd = open("test.txt", O_RDONLY);
-	if (fd < 0)
-		return (1);
-	line = get_next_line(fd);
-	while (line)
-	{
-		printf("LINE: %s\n", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	printf("EOF reached\n");
-	close(fd);
-	return (0);
-}
-*/

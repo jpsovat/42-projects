@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 11:08:59 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/02 11:22:39 by jsovat-d         ###   ########.fr       */
+/*   Created: 2025/12/12 14:09:05 by jsovat-d          #+#    #+#             */
+/*   Updated: 2025/12/12 14:28:17 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 5
 # endif
 
 char	*get_next_line(int fd);
 
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-size_t	strlen_at(const char *s, int c);
-char	*cpy_buffer(const char *s, size_t n);
-char	*find_chr(const char *s, int c);
-char	*merge_stash_buffer(char *s1, char const *s2);
+char	*grow_line(const char *buffer, char *line);
+void	ft_strcpy(const char *buffer, const char *line, char *line_uptd);
+size_t	strlen(const char *str);
+int		find_newline(const char *buffer, ssize_t bytes_read);
 
 #endif
