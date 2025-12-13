@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:09:05 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/12 14:28:17 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/13 20:01:42 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ char	*grow_line(const char *buffer, char *line);
 void	ft_strcpy(const char *buffer, const char *line, char *line_uptd);
 size_t	strlen(const char *str);
 int		find_newline(const char *buffer, ssize_t bytes_read);
+char	*clear(char *str);
+char	*keep(char *str);
 
 #endif

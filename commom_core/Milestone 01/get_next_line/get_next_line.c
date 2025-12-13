@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:01:28 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/12 14:28:14 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/13 20:01:41 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ char	*get_next_line(int fd)
 	ssize_t		bytes_read;
 	char		*buffer;
 	static char	*line;
+	char		*line_to_print;
+	char		*temp;
 
 	bytes_read = 1;
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
@@ -100,7 +102,11 @@ char	*get_next_line(int fd)
 			break ;
 		buffer[bytes_read] = '\0';
 		line = grow_line(buffer, line);
+		temp = line;
+		line_to_print = clear(temp);
+		line = keep(temp);
+		free(temp);
 	}
 	free(buffer);
-	return (line);
+	return (line_to_print);
 }
