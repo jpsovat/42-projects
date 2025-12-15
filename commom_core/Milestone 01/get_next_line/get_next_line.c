@@ -6,107 +6,99 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:01:28 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/13 20:01:41 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/15 10:44:49 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /* ========================================================================== */
-/*                               HELPERS                                      */
+/*                                   HELPERS                                  */
 /* ========================================================================== */
 
 /*
-** grow_line
+** extract_line
 ** --------------------------------------------------------------------------
-** Appends the content of `buffer` to the accumulated `line`.
-** - Allocates a new string with the correct size
-** - Copies old content + new buffer
-** - Frees the previous line
-** - Returns the updated line
+** Extracts one line from stash and updates it.
 */
-char	*grow_line(const char *buffer, char *line)
+static char	*extract_line(char **stash)
 {
-	char	*line_uptd;
-	size_t	len_line;
-	size_t	len_buffer;
+	char	*line;
+	char	*remaining;
+	size_t	line_len;
+	size_t	total_len;
 
-	len_line = 0;
-	if (line)
-		len_line = strlen(line);
-	len_buffer = strlen(buffer);
-	line_uptd = (char *)malloc(len_line + len_buffer + 1);
-	if (!line_uptd)
+	line_len = ft_strlen_until(*stash, '\n');
+	if ((*stash)[line_len] == '\n')
+		line_len++;
+	line = copy_chunk(*stash, line_len);
+	if (!line)
 		return (NULL);
-	ft_strcpy(buffer, line, line_uptd);
-	if (line)
-		free(line);
-	return (line_uptd);
-}
-
-/*
-** find_newline
-** --------------------------------------------------------------------------
-** Checks if a newline character '\n' exists in the buffer.
-** - Only inspects the bytes actually read from fd
-*/
-int	find_newline(const char *buffer, ssize_t bytes_read)
-{
-	int	i;
-
-	if (!buffer)
-		return (-1);
-	i = 0;
-	while (i < bytes_read)
+	total_len = ft_strlen_until(*stash, '\0');
+	remaining = copy_chunk(*stash + line_len, total_len - line_len + 1);
+	if (!remaining)
 	{
-		if (buffer[i] == '\n')
-			return (1);
-		i++;
+		free(line);
+		return (NULL);
 	}
-	return (0);
+	free(*stash);
+	*stash = remaining;
+	return (line);
 }
 
-/* ========================================================================== */
-/*                          GET_NEXT_LINE                                     */
-/* ========================================================================== */
-
 /*
-** get_next_line (simplified version)
+** read_and_grow
 ** --------------------------------------------------------------------------
-** Reads from fd until a newline is found or EOF is reached.
-** - Uses a static variable to accumulate content
-** - Stops reading as soon as '\n' appears
-** - Returns the accumulated line
+** Reads from fd and appends data to stash until newline or EOF.
 */
-char	*get_next_line(int fd)
+static char	*read_and_grow(int fd, char *stash)
 {
-	ssize_t		bytes_read;
-	char		*buffer;
-	static char	*line;
-	char		*line_to_print;
-	char		*temp;
+	char	*buffer;
+	ssize_t	bytes_read;
 
 	bytes_read = 1;
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (bytes_read > 0 && find_newline(buffer, bytes_read) == 0)
+	while (bytes_read > 0 && !find_newline(stash))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
-		{
-			free(buffer);
-			return (NULL);
-		}
 		if (bytes_read == 0)
 			break ;
+		if (bytes_read < 0)
+		{
+			free(buffer);
+			free(stash);
+			return (NULL);
+		}
 		buffer[bytes_read] = '\0';
-		line = grow_line(buffer, line);
-		temp = line;
-		line_to_print = clear(temp);
-		line = keep(temp);
-		free(temp);
+		stash = merge_chunks(stash, buffer);
 	}
 	free(buffer);
-	return (line_to_print);
+	if (ft_strlen_until(stash, '\0') > 0)
+		return (stash);
+	return (NULL);
+}
+
+/* ========================================================================== */
+/*                               GET_NEXT_LINE                                */
+/* ========================================================================== */
+
+char	*get_next_line(int fd)
+{
+	static char	*stash;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	stash = read_and_grow(fd, stash);
+	if (!stash)
+		return (NULL);
+	line = extract_line(&stash);
+	if (!stash[0])
+	{
+		free(stash);
+		stash = NULL;
+	}
+	return (line);
 }

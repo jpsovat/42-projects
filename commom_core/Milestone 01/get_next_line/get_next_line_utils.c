@@ -6,127 +6,93 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:08:10 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/13 20:01:40 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/15 10:45:53 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /* ========================================================================== */
-/*                              STRING UTILS                                  */
+/*                               STRING HELPERS                               */
 /* ========================================================================== */
 
-/*
-** ft_strcpy
-** --------------------------------------------------------------------------
-** Copies the content of `line` followed by `buffer` into `line_uptd`.
-** - Assumes `line_uptd` is already allocated with enough space
-** - Handles NULL `line` safely
-** - Always null-terminates the resulting string
-*/
-void	ft_strcpy(const char *buffer, const char *line, char *line_uptd)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	i = 0;
-	if (line)
-	{
-		while (line[i] != '\0')
-		{
-			line_uptd[i] = line[i];
-			i++;
-		}
-	}
-	j = 0;
-	if (buffer)
-	{
-		while (buffer[j] != '\0')
-		{
-			line_uptd[i + j] = buffer[j];
-			j++;
-		}
-	}
-	line_uptd[i + j] = '\0';
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	while (n--)
+		*d++ = *s++;
+	return (dest);
 }
 
-/*
-** strlen
-** --------------------------------------------------------------------------
-** Returns the length of a string.
-** - Safe against NULL pointers
-*/
-size_t	strlen(const char *str)
+size_t	ft_strlen_until(const char *str, int stop)
 {
 	size_t	i;
 
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i])
+	while (str[i] && str[i] != stop)
 		i++;
 	return (i);
 }
 
-/*
-** clear
-** --------------------------------------------------------------------------
-** keep only what is before '\n'
-*/
-char	*clear(char *str)
+char	*find_newline(const char *str)
 {
-	int		i;
-	char	*line;
-
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	line = malloc(sizeof(char) * (i + 1));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (*str)
 	{
-		line[i] = str[i];
-		i++;
+		if (*str == '\n')
+			return ((char *)str);
+		str++;
 	}
-	line[i] = '\0';
-	return (line);
+	return (NULL);
 }
 
-/*
-** clear
-** --------------------------------------------------------------------------
-** keep only what is before '\n'
-*/
-char	*keep(char *str)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	*line;
+/* ========================================================================== */
+/*                               MEMORY HELPERS                               */
+/* ========================================================================== */
 
-	if (!str)
+char	*copy_chunk(const char *str, size_t len)
+{
+	char	*copy;
+	size_t	i;
+
+	copy = (char *)malloc(len + 1);
+	if (!copy)
 		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	i++;
-	j = i;
-	while (str[j] && str[j] != '\n')
-		j++;
-	line = malloc(sizeof(char) * ((j - i) + 1));
-	if (!line)
-		return (NULL);
-	k = 0;
-	while (i < j)
+	while (i < len)
 	{
-		line[k] = str[i];
+		copy[i] = str[i];
 		i++;
-		k++;
 	}
-	line[k] = '\0';
-	return (line);
+	copy[i] = '\0';
+	return (copy);
+}
+
+char	*merge_chunks(char *stash, const char *chunk)
+{
+	size_t	len_stash;
+	size_t	len_chunk;
+	char	*merged;
+
+	len_stash = ft_strlen_until(stash, '\0');
+	len_chunk = ft_strlen_until(chunk, '\0');
+	merged = (char *)malloc(len_stash + len_chunk + 1);
+	if (!merged)
+		return (NULL);
+	if (stash)
+		ft_memcpy(merged, stash, len_stash);
+	ft_memcpy(merged + len_stash, chunk, len_chunk);
+	merged[len_stash + len_chunk] = '\0';
+	if (stash)
+		free(stash);
+	return (merged);
 }

@@ -6,31 +6,34 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:09:05 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/13 20:01:42 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/15 10:44:50 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 42
 # endif
+
+/* ========================================================================== */
+/*                               MAIN FUNCTION                                */
+/* ========================================================================== */
 
 char	*get_next_line(int fd);
 
-char	*grow_line(const char *buffer, char *line);
-void	ft_strcpy(const char *buffer, const char *line, char *line_uptd);
-size_t	strlen(const char *str);
-int		find_newline(const char *buffer, ssize_t bytes_read);
-char	*clear(char *str);
-char	*keep(char *str);
+/* ========================================================================== */
+/*                                  HELPERS                                   */
+/* ========================================================================== */
+
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+size_t	ft_strlen_until(const char *str, int stop);
+char	*find_newline(const char *str);
+char	*copy_chunk(const char *str, size_t len);
+char	*merge_chunks(char *stash, const char *chunk);
 
 #endif
