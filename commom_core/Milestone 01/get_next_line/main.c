@@ -6,11 +6,14 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 10:03:53 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/15 10:03:58 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/15 12:48:50 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
 
 /* ========================================================================== */
 /*                                 MAIN TEST                                  */
