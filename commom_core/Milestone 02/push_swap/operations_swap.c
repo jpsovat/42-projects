@@ -6,14 +6,14 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:44:48 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/15 18:55:37 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:41:05 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* sa function: swap first two elements of stack a */
-void	sa(t_stack *stack)
+/* swap_a function: swap first two elements of stack a */
+static void	swap_a(t_stack *stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -25,11 +25,10 @@ void	sa(t_stack *stack)
 	first->next = second->next;
 	second->next = first;
 	stack->a = second;
-	write(1, "sa\n", 3);
 }
 
-/* sb function: swap first two elements of stack b */
-void	sb(t_stack *stack)
+/* swap_b function: swap first two elements of stack b */
+static void	swap_b(t_stack *stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -41,5 +40,26 @@ void	sb(t_stack *stack)
 	first->next = second->next;
 	second->next = first;
 	stack->b = second;
+}
+
+/* run swap_a function and print command */
+void	sa(t_stack *stack)
+{
+	swap_a(stack);
+	write(1, "sa\n", 3);
+}
+
+/* run swap_b function and print command */
+void	sb(t_stack *stack)
+{
+	swap_b(stack);
 	write(1, "sb\n", 3);
+}
+
+/* run swap_a and swap_b functions and print command */
+void	ss(t_stack *stack)
+{
+	swap_a(stack);
+	swap_b(stack);
+	write(1, "ss\n", 3);
 }
