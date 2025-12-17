@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:27:43 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/17 11:32:06 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/17 11:35:02 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static void	reverse_rotate_a(t_stack *stack)
 {
 	t_node	*prev;
 	t_node	*last;
+
 	if (!stack->a || !stack->a->next)
-		return;
+		return ;
 	prev = NULL;
 	last = stack->a;
 	while (last->next)
@@ -36,8 +37,9 @@ static void	reverse_rotate_b(t_stack *stack)
 {
 	t_node	*prev;
 	t_node	*last;
+
 	if (!stack->b || !stack->b->next)
-		return;
+		return ;
 	prev = NULL;
 	last = stack->b;
 	while (last->next)
