@@ -6,12 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/17 12:09:58 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/17 12:30:09 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 /* =========================== INITIALIZING ================================= */
 
@@ -40,19 +39,6 @@ int	stack_size(t_node *node)
 		node = node->next;
 	}
 	return (count);
-}
-
-/* =============================== PRINT =================================== */
-
-/*  print stack while we have value, move to next node  */
-void	print_stack(t_node *node)
-{
-	while (node)
-	{
-		printf("%d ", node->value);
-		node = node->next;
-	}
-	printf("\n");
 }
 
 /* =============================== RUN =================================== */
