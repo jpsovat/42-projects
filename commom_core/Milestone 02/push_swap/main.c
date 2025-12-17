@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/17 11:32:04 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/17 12:09:58 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,21 @@ t_node	*new_node(int value)
 	return (node);
 }
 
-/* ============================ RUN AND PRINT ============================== */
+/*  count nodes in a stack  */
+int	stack_size(t_node *node)
+{
+	int	count;
+
+	count = 0;
+	while (node)
+	{
+		count++;
+		node = node->next;
+	}
+	return (count);
+}
+
+/* =============================== PRINT =================================== */
 
 /*  print stack while we have value, move to next node  */
 void	print_stack(t_node *node)
@@ -41,55 +55,39 @@ void	print_stack(t_node *node)
 	printf("\n");
 }
 
-/*  running and checking  */
-int	main(void)
+/* =============================== RUN =================================== */
+
+int	main(int argc, char **argv)
 {
 	t_stack	stack;
+	int		size;
 
-	/* create stack A: 1 -> 2 -> 3 */
-	stack.a = new_node(1);
-	stack.a->next = new_node(2);
-	stack.a->next->next = new_node(3);
-
-	/* create stack B: 4 -> 5 */
-	stack.b = new_node(4);
-	stack.b->next = new_node(5);
-
-	/* print initial stacks */
-	printf("\nEstado inicial:\n");
-	printf("A: ");
-	print_stack(stack.a);
-	printf("B: ");
-	print_stack(stack.b);
-
-	/* rra */
-	printf("\n---------------------------\n");
-	printf("Comando: rra\n");
-	rra(&stack);
-
-	printf("A: ");
-	print_stack(stack.a);
-	printf("B: ");
-	print_stack(stack.b);
-
-	/* rrb */
-	printf("\n---------------------------\n");
-	printf("Comando: rrb\n");
-	rrb(&stack);
-	
-	printf("A: ");
-	print_stack(stack.a);
-	printf("B: ");
-	print_stack(stack.b);
-
-	/* rrr */
-	printf("\n---------------------------\n");
-	printf("Comando: rrr\n");
-	rrr(&stack);
-	
-	printf("A: ");
-	print_stack(stack.a);
-	printf("B: ");
-	print_stack(stack.b);
+	stack.a = NULL;
+	stack.b = NULL;
+	if (argc < 2)
+		return (0);
+	/* criar stack A a partir dos argumentos (simples por enquanto) */
+	stack.a = new_node(ft_atoi(argv[1]));
+	if (argc > 2)
+		stack.a->next = new_node(ft_atoi(argv[2]));
+	if (argc > 3)
+		stack.a->next->next = new_node(ft_atoi(argv[3]));
+	size = stack_size(stack.a);
+	/* caso 0 ou 1 elemento */
+	if (size <= 1)
+		return (0);
+	/* caso 2 elementos */
+	if (size == 2)
+	{
+		if (stack.a->value > stack.a->next->value)
+			sa(&stack);
+		return (0);
+	}
+	/* caso 3 elementos */
+	if (size == 3)
+	{
+		sort_three(&stack);
+		return (0);
+	}
 	return (0);
 }

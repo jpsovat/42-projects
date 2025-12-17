@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/17 11:32:07 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2025/12/17 12:03:43 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ typedef struct s_stack
 
 /* stack init */
 t_node	*new_node(int value);
+
+/* init helpers */
+int		ft_atoi(const char *nptr);
+int		stack_size(t_node *node);
 
 /* operations */
 void	pa(t_stack *stack);
