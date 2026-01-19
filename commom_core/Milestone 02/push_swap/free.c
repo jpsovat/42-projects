@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 11:48:23 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 14:59:53 by jsovat-d         ###   ########.fr       */
+/*   Created: 2026/01/19 16:55:29 by jsovat-d          #+#    #+#             */
+/*   Updated: 2026/01/19 16:57:58 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+void	free_stack(t_node *head)
 {
-	int	i;
-	int	sign;
-	int	num;
+	t_node	*tmp;
 
-	sign = 1;
-	i = 0;
-	num = 0;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '+')
-		i++;
-	else if (nptr[i] == '-')
+	while (head)
 	{
-		sign *= -1;
-		i++;
+		tmp = head->next;
+		free(head);
+		head = tmp;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		num = (num * 10) + nptr[i] - '0';
-		i++;
-	}
-	return (sign * num);
 }

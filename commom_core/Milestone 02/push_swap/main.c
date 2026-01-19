@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 15:03:05 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:57:56 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ static void	free_tokens(char **tokens)
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
+	t_node	*node;
 	int		size;
 	int		i;
 	char	**tokens;
+	long	value;
 
 	stack.a = NULL;
 	stack.b = NULL;
@@ -92,7 +94,27 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (tokens[i])
 	{
-		append_node(&stack.a, new_node(ft_atoi(tokens[i])));
+		if (!is_valid_int_str(tokens[i]) || !ft_atol_safe(tokens[i], &value))
+		{
+			write(2, "Error\n", 6);
+			free_tokens(tokens);
+			free_stack(stack.a);
+			return (1);
+		}
+		if (has_value(stack.a, (int)value))
+		{
+			write(2, "Error\n", 6);
+			free_tokens(tokens);
+			free_stack(stack.a);
+			return (1);
+		}
+		node = new_node((int)value);
+		if (!node)
+		{
+			free_tokens(tokens);
+			return (1);
+		}
+		append_node(&stack.a, node);
 		i++;
 	}
 	free_tokens(tokens);
