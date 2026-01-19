@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/17 12:03:43 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 14:59:48 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stddef.h>
 
 /* ==============================    STRUCT    ============================== */
 
@@ -42,6 +43,9 @@ t_node	*new_node(int value);
 /* init helpers */
 int		ft_atoi(const char *nptr);
 int		stack_size(t_node *node);
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	**parse_args(int argc, char **argv);
 
 /* operations */
 void	pa(t_stack *stack);

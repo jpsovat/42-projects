@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2025/12/17 12:53:49 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:03:05 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ t_node	*new_node(int value)
 	return (node);
 }
 
+/*  include tokens into node  */
+static void	append_node(t_node **head, t_node *new)
+{
+	t_node	*cur;
+
+	if (!*head)
+	{
+		*head = new;
+		return ;
+	}
+	cur = *head;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = new;
+}
+
 /*  count nodes in a stack  */
 int	stack_size(t_node *node)
 {
@@ -41,35 +57,57 @@ int	stack_size(t_node *node)
 	return (count);
 }
 
+/*  free tokens for next reading  */
+static void	free_tokens(char **tokens)
+{
+	int	i;
+
+	i = 0;
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
+}
+
 /* =============================== RUN =================================== */
 
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
 	int		size;
+	int		i;
+	char	**tokens;
 
 	stack.a = NULL;
 	stack.b = NULL;
 	if (argc < 2)
 		return (0);
-	/* criar stack A a partir dos argumentos (simples por enquanto) */
-	stack.a = new_node(ft_atoi(argv[1]));
-	if (argc > 2)
-		stack.a->next = new_node(ft_atoi(argv[2]));
-	if (argc > 3)
-		stack.a->next->next = new_node(ft_atoi(argv[3]));
+	/* transform to valid input (string array) */
+	tokens = parse_args(argc, argv);
+	if (!tokens)
+		return (0);
+	/* build stack A from tokens, trasnforming to integers */
+	i = 0;
+	while (tokens[i])
+	{
+		append_node(&stack.a, new_node(ft_atoi(tokens[i])));
+		i++;
+	}
+	free_tokens(tokens);
 	size = stack_size(stack.a);
-	/* caso 0 ou 1 elemento */
+/* caso 0 ou 1 elemento */
 	if (size <= 1)
 		return (0);
-	/* caso 2 elementos */
+/* caso 2 elementos */
 	if (size == 2)
 	{
 		if (stack.a->value > stack.a->next->value)
 			sa(&stack);
 		return (0);
 	}
-	/* caso 3 elementos */
+/* caso 3 elementos */
 	if (size == 3)
 	{
 		sort_three(&stack);
