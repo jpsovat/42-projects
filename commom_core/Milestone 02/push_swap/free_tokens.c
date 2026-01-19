@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_tokens.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 16:55:29 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 16:57:58 by jsovat-d         ###   ########.fr       */
+/*   Created: 2026/01/19 22:35:00 by jsovat-d          #+#    #+#             */
+/*   Updated: 2026/01/19 21:42:12 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_node *head)
+void	free_tokens(char **tokens)
 {
-	t_node	*tmp;
+	int	i;
 
-	while (head)
+	if (!tokens)
+		return ;
+	i = 0;
+	while (tokens[i])
 	{
-		tmp = head->next;
-		free(head);
-		head = tmp;
+		free(tokens[i]);
+		i++;
 	}
+	free(tokens);
 }

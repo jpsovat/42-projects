@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 16:58:14 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 21:40:39 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 /* ==============================    STRUCT    ============================== */
 
-/*  create struct for nodes [valeu | node *next]  */
+/*  create struct for nodes [value | node *next]  */
 typedef struct s_node
 {
 	int				value;
@@ -39,20 +39,27 @@ typedef struct s_stack
 
 /* stack init */
 t_node	*new_node(int value);
+void	append_node(t_node **head, t_node *new);
+int		init_stack_a(t_stack *stack, int argc, char **argv);
 
-/* init helpers */
+/* stack utils */
 int		stack_size(t_node *node);
-char	**ft_split(char const *s, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	free_stack(t_node **head);
+int		has_value(t_node *head, int value);
+
+/* ==============================   PARSING   =============================== */
+
 char	**parse_args(int argc, char **argv);
+void	free_tokens(char **tokens);
 int		is_valid_int_str(const char *s);
 int		ft_atol_safe(const char *s, long *out);
-int		has_value(t_node *head, int value);
-void	free_stack(t_node *head);
 
+/* libft-like utils */
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
+/* ============================== OPERATIONS =============================== */
 
-/* operations */
 void	pa(t_stack *stack);
 void	pb(t_stack *stack);
 void	sa(t_stack *stack);
@@ -65,7 +72,8 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
 
-/* sort */
+/* ===============================   SORT   ================================= */
+
 void	sort_three(t_stack *stack);
 
 #endif

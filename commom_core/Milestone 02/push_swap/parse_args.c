@@ -6,13 +6,12 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 12:35:33 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 14:59:48 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 21:38:55 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Count how many strings are in a NULL-terminated char */
 static int	count_strings(char **arr)
 {
 	int	i;
@@ -23,61 +22,74 @@ static int	count_strings(char **arr)
 	return (i);
 }
 
-/* Free a NULL-terminated char */
-static void	free_str_array(char **arr)
+static int	count_total_tokens(int argc, char **argv)
 {
-	int	i;
-
-	if (!arr)
-		return;
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-}
-
-/* Join all argv arguments into a single array of strings */
-char	**parse_args(int argc, char **argv)
-{
-	char	**result;
 	char	**split;
 	int		i;
-	int		j;
-	int		k;
 	int		total;
 
-	/* first pass: count total numbers */
-	total = 0;
 	i = 1;
+	total = 0;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			return (NULL);
+			return (-1);
 		total += count_strings(split);
-		free_str_array(split);
+		free_tokens(split);
 		i++;
 	}
+	return (total);
+}
 
-	/* allocate result array */
-	result = malloc(sizeof(char *) * (total + 1));
-	if (!result)
-		return (NULL);
+static void	init_null_array(char **arr, int size)
+{
+	int	i;
 
-	/* second pass: fill result */
+	i = 0;
+	while (i <= size)
+	{
+		arr[i] = NULL;
+		i++;
+	}
+}
+
+static int	fill_tokens(char **res, int argc, char **argv)
+{
+	char	**split;
+	int		i;
+	int		j;
+	int		k;
+
 	i = 1;
 	k = 0;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			return (free(result), NULL);
+			return (0);
 		j = 0;
 		while (split[j])
-			result[k++] = split[j++];
-		free(split); /* free only the array, keep strings */
+			res[k++] = split[j++];
+		free(split);
 		i++;
 	}
-	result[k] = NULL;
+	return (1);
+}
+
+char	**parse_args(int argc, char **argv)
+{
+	char	**result;
+	int		total;
+
+	total = count_total_tokens(argc, argv);
+	if (total <= 0)
+		return (NULL);
+	result = malloc(sizeof(char *) * (total + 1));
+	if (!result)
+		return (NULL);
+	init_null_array(result, total);
+	if (!fill_tokens(result, argc, argv))
+		return (free_tokens(result), NULL);
 	return (result);
 }
