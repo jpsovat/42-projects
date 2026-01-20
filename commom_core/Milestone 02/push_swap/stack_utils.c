@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:15:34 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 21:41:18 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:52:26 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,15 @@ void	free_stack(t_node **head)
 		free(*head);
 		*head = tmp;
 	}
+}
+
+int	is_sorted(t_node *a)
+{
+	while (a && a->next)
+	{
+		if (a->value > a->next->value)
+			return (0);
+		a = a->next;
+	}
+	return (1);
 }

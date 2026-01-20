@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/19 21:40:39 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:57:26 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		init_stack_a(t_stack *stack, int argc, char **argv);
 int		stack_size(t_node *node);
 void	free_stack(t_node **head);
 int		has_value(t_node *head, int value);
+int		is_sorted(t_node *a);
 
 /* ==============================   PARSING   =============================== */
 
@@ -75,5 +76,11 @@ void	rrr(t_stack *stack);
 /* ===============================   SORT   ================================= */
 
 void	sort_three(t_stack *stack);
+void	sort_five(t_stack *stack);
+
+/* ============================   SORT UTILS  =============================== */
+
+int		find_min(t_node *a);
+void	bring_min_to_top_a(t_stack *s);
 
 #endif
