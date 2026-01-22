@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:15:34 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/20 13:52:26 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:30:08 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_node	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->index = -1;
 	node->next = NULL;
 	return (node);
 }

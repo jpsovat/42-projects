@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/20 13:55:20 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:58:07 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,15 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	if (!is_sorted(stack.a))
+	{
+		if (!assign_index(stack.a))
+		{
+			free_stack(&stack.a);
+			free_stack(&stack.b);
+			return (1);
+		}
 		run_sort(&stack);
+	}
 	free_stack(&stack.a);
 	free_stack(&stack.b);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/20 13:57:26 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:57:58 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
@@ -47,6 +48,7 @@ int		stack_size(t_node *node);
 void	free_stack(t_node **head);
 int		has_value(t_node *head, int value);
 int		is_sorted(t_node *a);
+int		assign_index(t_node *a);
 
 /* ==============================   PARSING   =============================== */
 
