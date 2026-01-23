@@ -6,13 +6,13 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/22 17:58:07 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:56:05 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	run_sort(t_stack *stack)
+static int	run_sort(t_stack *stack)
 {
 	int	size;
 
@@ -26,6 +26,13 @@ static void	run_sort(t_stack *stack)
 		sort_three(stack);
 	else if (size <= 5)
 		sort_five(stack);
+	else
+	{
+		if (!assign_index(stack->a))
+			return (0);
+		radix_sort(stack);
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)

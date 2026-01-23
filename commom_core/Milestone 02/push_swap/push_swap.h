@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/22 17:57:58 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:56:08 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	sort_five(t_stack *stack);
 
 int		find_min(t_node *a);
 void	bring_min_to_top_a(t_stack *s);
+void	radix_sort(t_stack *stack);
 
 #endif
