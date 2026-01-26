@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:34:05 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/23 16:56:09 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/26 10:59:41 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	radix_sort(t_stack *stack)
 	while (bit < max_bits)
 	{
 		i = 0;
-		while (i < size)
+		while (i < size && stack->a)
 		{
 			if (((stack->a->index >> bit) & 1) == 0)
 				pb(stack);
@@ -43,6 +43,7 @@ void	radix_sort(t_stack *stack)
 				ra(stack);
 			i++;
 		}
+		i++;
 		while (stack->b)
 			pa(stack);
 		bit++;

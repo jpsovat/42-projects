@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/23 16:56:05 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:03:00 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	run_sort(t_stack *stack)
 	{
 		if (!assign_index(stack->a))
 			return (0);
-		radix_sort(stack);
+		sort_big(stack);
 	}
 	return (1);
 }

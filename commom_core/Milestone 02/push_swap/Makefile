@@ -6,7 +6,7 @@
 #    By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/23 00:00:00 by jsovat-d          #+#    #+#              #
-#    Updated: 2026/01/23 16:55:45 by jsovat-d         ###   ########.fr        #
+#    Updated: 2026/01/26 13:21:48 by jsovat-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRCS	= main.c \
 		  sort_five.c \
 		  sort_utils.c \
 		  index.c \
-		  radix.c
+		  radix.c \
+		  sort_big.c \
+		  sort_big_utils.c
 
 OBJS	= $(SRCS:.c=.o)
 
