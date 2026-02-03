@@ -1,39 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   0.0_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 16:24:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:27:45 by jsovat-d         ###   ########.fr       */
+/*   Created: 2026/01/28 15:07:54 by jsovat-d          #+#    #+#             */
+/*   Updated: 2026/01/29 18:12:55 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-static int	run_sort(t_stack *stack)
-{
-	int	size;
-
-	size = stack_size(stack->a);
-	if (size == 2)
-	{
-		if (stack->a->value > stack->a->next->value)
-			sa(stack);
-	}
-	else if (size == 3)
-		sort_three(stack);
-	else if (size <= 5)
-		sort_five(stack);
-	else
-	{
-		if (!assign_index(stack->a))
-			return (0);
-		sort_big(stack);
-	}
-	return (1);
-}
+#include "0.0_push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -52,13 +29,13 @@ int	main(int argc, char **argv)
 	{
 		if (!assign_index(stack.a))
 		{
-			free_stack(&stack.a);
-			free_stack(&stack.b);
+			ft_free_stack(&stack.a);
+			ft_free_stack(&stack.b);
 			return (1);
 		}
 		run_sort(&stack);
 	}
-	free_stack(&stack.a);
-	free_stack(&stack.b);
+	ft_free_stack(&stack.a);
+	ft_free_stack(&stack.b);
 	return (0);
 }

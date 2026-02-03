@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 21:15:34 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 16:14:49 by jsovat-d         ###   ########.fr       */
+/*   Created: 2026/01/29 11:26:06 by jsovat-d          #+#    #+#             */
+/*   Updated: 2026/01/29 17:51:40 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "0.0_push_swap.h"
 
 /* create new node */
+
 t_node	*new_node(int value)
 {
 	t_node	*node;
@@ -21,12 +22,12 @@ t_node	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
-	node->index = -1;
 	node->next = NULL;
 	return (node);
 }
 
 /* append node at the end of the list */
+
 void	append_node(t_node **head, t_node *new)
 {
 	t_node	*cur;
@@ -45,41 +46,16 @@ void	append_node(t_node **head, t_node *new)
 }
 
 /* count number of nodes in a stack */
+
 int	stack_size(t_node *node)
 {
-	int	count;
+	int	stack_size;
 
-	count = 0;
+	stack_size = 0;
 	while (node)
 	{
-		count++;
+		stack_size++;
 		node = node->next;
 	}
-	return (count);
-}
-
-/* free entire stack */
-void	free_stack(t_node **head)
-{
-	t_node	*tmp;
-
-	if (!head || !*head)
-		return ;
-	while (*head)
-	{
-		tmp = (*head)->next;
-		free(*head);
-		*head = tmp;
-	}
-}
-
-int	is_sorted(t_node *a)
-{
-	while (a && a->next)
-	{
-		if (a->value > a->next->value)
-			return (0);
-		a = a->next;
-	}
-	return (1);
+	return (stack_size);
 }
