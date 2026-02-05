@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:28:05 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 18:12:53 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:38:33 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	run_sort(t_stack *stack)
 	else if (size == 3)
 		sort_three(stack);
 	else if (size <= 5)
-		sort_five(stack);
+		sort_four_five(stack);
 /*	else
 		sort_big(stack);
 */

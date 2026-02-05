@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 18:12:56 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:42:38 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	rrr(t_stack *stack);
 void	run_sort(t_stack *stack);
 void	sort_two(t_stack *stack);
 void	sort_three(t_stack *stack);
+void	sort_four_five(t_stack *stack);
 
 
 
