@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:26:06 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:51:40 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:10:01 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 /* create new node */
 
@@ -58,4 +58,26 @@ int	stack_size(t_node *node)
 		node = node->next;
 	}
 	return (stack_size);
+}
+
+int	get_chunk_size(int size)
+{
+	if (size <= 100)
+		return (20);
+	return (60);
+}
+
+int	find_pos(t_node *node, int target)
+{
+	int	pos;
+
+	pos = 0;
+	while (node)
+	{
+		if (node->index == target)
+			return (pos);
+		pos++;
+		node = node->next;
+	}
+	return (-1);
 }

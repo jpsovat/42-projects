@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:59:18 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 15:41:53 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:23 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 static size_t	ft_count_substr(const char *str, char dlm)
 {

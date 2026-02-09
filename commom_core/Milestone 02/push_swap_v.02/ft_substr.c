@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 14:19:23 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 11:42:15 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:28 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 static size_t	ft_strlen(const char *s)
 {

@@ -6,26 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 18:02:07 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/02/05 15:43:36 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:07 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
-
-static int	find_pos(t_node *node, int target)
-{
-	int	pos;
-
-	pos = 0;
-	while (node)
-	{
-		if (node->index == target)
-			return (pos);
-		pos++;
-		node = node->next;
-	}
-	return (-1);
-}
+#include "push_swap.h"
 
 static void	bring_target_to_top_a(t_stack *stack, int target)
 {
@@ -58,7 +43,7 @@ void	sort_four_five(t_stack *stack)
 {
 	int	push;
 	int	target;
-	
+
 	if (stack_size(stack->a) == 4)
 		push = 1;
 	else if (stack_size(stack->a) == 5)
@@ -73,5 +58,5 @@ void	sort_four_five(t_stack *stack)
 	}
 	sort_three(stack);
 	while (stack->b)
-    	pa(stack);
+		pa(stack);
 }

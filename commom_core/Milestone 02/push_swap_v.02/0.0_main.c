@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:07:54 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 18:12:55 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:08:22 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 int	main(int argc, char **argv)
 {

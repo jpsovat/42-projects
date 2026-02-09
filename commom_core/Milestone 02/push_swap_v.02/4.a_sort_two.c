@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:38:39 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:51:42 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:08:58 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 void	sort_two(t_stack *stack)
 {

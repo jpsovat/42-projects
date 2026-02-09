@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0.0_push_swap.h                                    :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/02/05 15:42:38 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:07:44 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 /* ==========================    BIB. INCLUDES    =========================== */
@@ -27,7 +27,7 @@ typedef struct s_node
 	int				value;
 	int				index;
 	struct s_node	*next;
-} t_node;
+}	t_node;
 
 /*  create struct for stacks, pointing to the first node position [node *]  */
 typedef struct s_stack
@@ -58,6 +58,8 @@ void	ft_free_stack(t_node **head);
 int		is_sorted(t_node *stack_a);
 int		assign_index(t_node *node);
 int		stack_size(t_node *node);
+int		get_chunk_size(int size);
+int		find_pos(t_node *node, int target);
 
 /* ============================== OPERATIONS =============================== */
 
@@ -79,7 +81,6 @@ void	run_sort(t_stack *stack);
 void	sort_two(t_stack *stack);
 void	sort_three(t_stack *stack);
 void	sort_four_five(t_stack *stack);
-
-
+void	sort_big(t_stack *stack);
 
 #endif

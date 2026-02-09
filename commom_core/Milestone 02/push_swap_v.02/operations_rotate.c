@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:45:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:51:58 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:43 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 /* ra shifts up all elements of stack a by 1. The 1st becomes the last */
 static void	rotate_a(t_stack *stack)

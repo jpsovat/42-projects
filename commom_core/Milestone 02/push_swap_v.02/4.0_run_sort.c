@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:28:05 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/02/05 15:38:33 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:08:53 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 void	run_sort(t_stack *stack)
 {
@@ -25,7 +25,6 @@ void	run_sort(t_stack *stack)
 		sort_three(stack);
 	else if (size <= 5)
 		sort_four_five(stack);
-/*	else
+	else
 		sort_big(stack);
-*/
 }

@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 19:01:35 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 11:41:45 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:08:30 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 /*  place the numbers given into the stack                            */
 /*  step 01_parse_args: make valid different inputs from user         */

@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:39:21 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:51:35 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:33 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 /*  pb function: send 1st element of stack a to stack b pos1  */
 void	pb(t_stack *stack)

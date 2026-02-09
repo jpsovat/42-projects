@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:27:43 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:51:54 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:37 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 /* rra: shifts down all elements of stack A by 1. The last becomes the 1st */
 static void	reverse_rotate_a(t_stack *stack)

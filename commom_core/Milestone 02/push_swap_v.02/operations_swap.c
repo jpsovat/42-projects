@@ -6,11 +6,11 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:44:48 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/29 17:52:02 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:09:47 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0.0_push_swap.h"
+#include "push_swap.h"
 
 /* swap_a function: swap first two elements of stack a */
 static void	swap_a(t_stack *stack)
