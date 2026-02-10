@@ -6,7 +6,7 @@
 /*   By: jsovat-d <jsovat-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:35:04 by jsovat-d          #+#    #+#             */
-/*   Updated: 2026/01/26 10:53:16 by jsovat-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:07:44 by jsovat-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 /* ==========================    BIB. INCLUDES    =========================== */
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <stddef.h>
+# include <unistd.h>
+# include <limits.h>
 
 /* ==============================    STRUCT    ============================== */
 
@@ -32,34 +32,34 @@ typedef struct s_node
 /*  create struct for stacks, pointing to the first node position [node *]  */
 typedef struct s_stack
 {
-	t_node	*a;
-	t_node	*b;
+	struct s_node	*a;
+	struct s_node	*b;
 }	t_stack;
+
+/* ===========================   HELPER FUNCTIONS   ========================= */
+
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	ft_free_arguments(char **arguments);
+
+/* ================================   INPUT   =============================== */
+
+char	**parse_args(int argc, char **argv);
+int		is_valid_num(const char *s);
+int		convert_str_to_int(char	*str, int *number);
+int		has_value(t_node *head, int value);
 
 /* ==============================    STACK    =============================== */
 
-/* stack init */
+int		init_stack_a(t_stack *stack, int argc, char **argv);
 t_node	*new_node(int value);
 void	append_node(t_node **head, t_node *new);
-int		init_stack_a(t_stack *stack, int argc, char **argv);
-
-/* stack utils */
+void	ft_free_stack(t_node **head);
+int		is_sorted(t_node *stack_a);
+int		assign_index(t_node *node);
 int		stack_size(t_node *node);
-void	free_stack(t_node **head);
-int		has_value(t_node *head, int value);
-int		is_sorted(t_node *a);
-int		assign_index(t_node *a);
-
-/* ==============================   PARSING   =============================== */
-
-char	**parse_args(int argc, char **argv);
-void	free_tokens(char **tokens);
-int		is_valid_int_str(const char *s);
-int		ft_atol_safe(const char *s, long *out);
-
-/* libft-like utils */
-char	**ft_split(char const *s, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		get_chunk_size(int size);
+int		find_pos(t_node *node, int target);
 
 /* ============================== OPERATIONS =============================== */
 
@@ -75,17 +75,12 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
 
-/* ===============================   SORT   ================================= */
+/* ===============================   SORTING   ============================== */
 
+void	run_sort(t_stack *stack);
+void	sort_two(t_stack *stack);
 void	sort_three(t_stack *stack);
-void	sort_five(t_stack *stack);
+void	sort_four_five(t_stack *stack);
 void	sort_big(t_stack *stack);
-
-/* ============================   SORT UTILS  =============================== */
-
-int		find_min(t_node *a);
-void	bring_min_to_top_a(t_stack *s);
-void	radix_sort(t_stack *stack);
-void	bring_index_to_top_b(t_stack *stack, int target);
 
 #endif
